@@ -1,27 +1,27 @@
 apiVersion: apps/v1 
 kind: Deployment
 metadata:
-  name: pingtest
+  name: first-deployment
   labels:
-    app: pinger
+    app: hello-world
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: pinger
+      app: hello-world
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: pinger
+        app: hello-world
     spec:
       containers:
-      - image: ubuntu:latest
-        name: ubuntu-ctr
+      - image: httpd:latest
+        name: apache
         command:
-          - /bin/bash
-          - "-c"
-          - "sleep 60m"
+          #- /bin/bash
+          #- "-c"
+          #- "sleep 60m"
         imagePullPolicy: IfNotPresent
       restartPolicy: Always
